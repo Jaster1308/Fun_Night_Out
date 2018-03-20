@@ -1,5 +1,5 @@
 # restaurant api caller
-# restaraunts.py
+# restaurants.py
 import requests
 import ui
 
@@ -21,7 +21,6 @@ def print_restaraunt(start):
         ui.message("Tags: " + r["cuisines"])
         ui.message("$ for 2: " + str(r["average_cost_for_two"]) + "$")
         ui.message("Address: " + location["address"] + "\n")
-
 
 def main():
     start = 0
