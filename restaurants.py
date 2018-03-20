@@ -2,9 +2,10 @@
 # restaurants.py
 import requests
 import ui
+import os
 
 # api key for zomato
-zomato_api = "57ca188bd1cb406464affeaa2690bb55" # Response 403 for bad api key
+zomato_api = os.environ.get("ZOMATO_API_KEY") # Response 403 for bad api key
 # base url for requests in the Twin Cities area
 base_url = "https://developers.zomato.com/api/v2.1/search?entity_id=826&entity_type=city"
 # header for api request
@@ -49,3 +50,7 @@ def main():
 
 # call main function
 main()
+
+# questions
+# 1. Is it smart to do logging through a whole different file?
+# 2. Testing the api calls, do we just test for responses as in if bad api, 403?
