@@ -25,11 +25,16 @@ def print_restaraunt(start):
 def main():
     start = 0
     choice = "y"
-    ui.message("\n*Restaraunts in the Twin Cities Area*\n")
+    ui.message("\n*Restaraunts in the Twin Cities Area*")
     while choice != "n":
-        print_restaraunt(start)
-        choice = ui.prompt_for_more()
-        start+=1
+        if choice == "y":
+            print_restaraunt(start)
+            choice = ui.prompt_for_more()
+            start+=1
+        else:
+            ui.message("Please enter y or n:\n")
+            choice = ui.prompt_for_more()
+            continue
     ui.message("\nGoodbye!\n")
 
 main()
