@@ -1,6 +1,7 @@
 # restaurant api caller
 # ui.py
 
+# main menu display
 def display_menu():
 
     # Display choices for user, return users selection

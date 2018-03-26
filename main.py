@@ -2,6 +2,7 @@
 
 import restaurants, DBmovie, ui
 
+# handle choice for main menu display
 def handle_choice(choice):
 
     if choice == "1":
@@ -17,12 +18,14 @@ def handle_choice(choice):
     else:
         ui.message("Please enter a valid selection")
 
+# main function
 def main():
     ui.message("\nWelcome to Fun Night Out!")
 
     quit = "q"
     choice = None
 
+    # main menu display loop
     while choice != quit:
         choice = ui.display_menu()
         handle_choice(choice)

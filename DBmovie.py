@@ -15,7 +15,7 @@ def movie_api_top_5_movies_request():
 
     return response
 
-# print the top 5 movies from the response
+# print the top 5 movies from the response, used as display menu for movies
 def print_movie_list(response):
     count = 0
     ui.message("")
@@ -27,9 +27,11 @@ def print_movie_list(response):
     ui.message('b. back')
     ui.message("")
 
+# returns user selection for movie
 def pick_movie():
     return input('Enter your selection: ')
 
+# returns response for movie correlating to which_movie_number
 def synopsis(which_movie_number, response):
     result_for_number = response['results'][which_movie_number]
 
@@ -40,7 +42,7 @@ def synopsis(which_movie_number, response):
     ui.message('\nSynopsis:')
     ui.message(result_for_number['overview'])
 
-
+# handle_movie_choice function for movie main menu display
 def handle_movie_choice(choice, results):
 
     if choice >= "1" and choice <= "5":
@@ -49,6 +51,7 @@ def handle_movie_choice(choice, results):
     else:
         ui.message("Please enter a valid selection")
 
+# "main" function of DBmovie.py, kicks off movie api catcher and logic
 def movie_start():
 
     ui.message("\n*Top 5 movies in Twin Cities Area Theaters*")
