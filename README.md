@@ -2,20 +2,13 @@
 
 A command line python application using multiple APIs
 
-*Contributors*
+*Contributors* -
+Justin Johnson, Alexis Hennings
 
-Justin Johnson
-Alexis Hennings
+*Running the application*
 
-Running the application
-
-*Required*
-
-Python 3 or above - https://www.python.org/downloads/
-
-*After python is installed*
-
-- download folder
+- install python 3 or above - https://www.python.org/downloads/
+- download repository
 - open command line or terminal, navigate to folder
 - pip3 install -r requirements.txt
 - python3 main.py
