@@ -5,7 +5,8 @@ import ui
 import os
 
 # api key for zomato
-zomato_api = os.environ.get("ZOMATO_API_KEY") # Response 403 for bad api key
+# zomato_api = os.environ.get("ZOMATO_API_KEY") # Response 403 for bad api key
+zomato_api = "57ca188bd1cb406464affeaa2690bb55"
 # base url for requests in the Twin Cities area
 base_url = "https://developers.zomato.com/api/v2.1/search?entity_id=826&entity_type=city"
 # header for api request
