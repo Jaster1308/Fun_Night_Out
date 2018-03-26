@@ -1,4 +1,9 @@
 # Fun_Night_Out
+A command line python application using multiple APIs
+
+*Contributors*
+Justin Johnson
+Alexis Hennings
 
 Running the application
 
