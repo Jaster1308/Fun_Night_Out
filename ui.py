@@ -7,7 +7,6 @@ def display_menu():
     print('''
         1. Pick a place to eat
         2. Pick a movie
-        3. Pick some music??
         q. Quit
     ''')
 

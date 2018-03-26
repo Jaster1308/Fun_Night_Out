@@ -11,7 +11,7 @@ def handle_choice(choice):
         DBmovie.movie_start()
 
     elif choice == "q" or choice == "Q":
-        ui.message("Goodbye!")
+        ui.message("\nGoodbye!\n")
         exit(0)
 
     else:

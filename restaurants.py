@@ -46,4 +46,4 @@ def food_start():
             ui.message("Please enter y or n:\n")
             choice = ui.prompt_for_more()
             continue
-    ui.message("\nGoodbye!\n")
+    ui.message("\n*Main Menu*")

@@ -3,7 +3,9 @@
 
 import requests
 import os
-#HTTP request
+import ui
+
+# HTTP request
 def movie_api_top_5_movies_request():
     url = "https://api.themoviedb.org/3/movie/now_playing"
     key = os.environ.get('MOVIE_KEY')
@@ -13,36 +15,51 @@ def movie_api_top_5_movies_request():
 
     return response
 
+# print the top 5 movies from the response
 def print_movie_list(response):
+    count = 0
+    ui.message("")
     for i in response['results']:
-        print(i['title'])
+        if count >= 5:
+            break
+        count+=1
+        ui.message(str(count) + ". " + i['title'])
+    ui.message('b. back')
+    ui.message("")
 
 def pick_movie():
-    return int(input('Enter number 1 through 5: ')) ##TODO validtaion
-
+    return input('Enter your selection: ')
 
 def synopsis(which_movie_number, response):
     result_for_number = response['results'][which_movie_number]
 
-    print('\nMovie:')
-    print(result_for_number["title"])
-    print('\nRelease date:')
-    print(result_for_number["release_date"])
-    print('\nSynopsis:')
-    print(result_for_number['overview'])
+    ui.message('\nMovie:')
+    ui.message(result_for_number["title"])
+    ui.message('\nRelease date:')
+    ui.message(result_for_number["release_date"])
+    ui.message('\nSynopsis:')
+    ui.message(result_for_number['overview'])
 
 
-def check_again():
-     search_again = input("Choose another movie or quit. \nType 'q' to quit: ")
-     if search_again.lower() == 'yes':
-         main()
-     else:
-         search_again == 'q'
-         print('\nGoodbye!')
-         exit()
+def handle_movie_choice(choice, results):
+
+    if choice >= "1" and choice <= "5":
+        synopsis(int(choice)-1, results)
+
+    else:
+        ui.message("Please enter a valid selection")
 
 def movie_start():
+
+    ui.message("\n*Top 5 movies in Twin Cities Area Theaters*")
     results = movie_api_top_5_movies_request()
-    print_movie_list(results)
-    which_movie = pick_movie()
-    synopsis(which_movie, results)
+
+    quit = "b"
+    choice = None
+
+    while choice != quit:
+        print_movie_list(results)
+        choice = pick_movie()
+        handle_movie_choice(choice, results)
+
+    ui.message("\n*Main Menu")
