@@ -18,14 +18,14 @@ def movie_api_top_5_movies_request():
 # print the top 5 movies from the response, used as display menu for movies
 def print_movie_list(response):
     count = 0
-    ui.message("")
+    ui.print_to_user("")
     for i in response['results']:
         if count >= 5:
             break
         count+=1
-        ui.message(str(count) + ". " + i['title'])
-    ui.message('b. back')
-    ui.message("")
+        ui.print_to_user(str(count) + ". " + i['title'])
+    ui.print_to_user('b. back')
+    ui.print_to_user("")
 
 # returns user selection for movie
 def pick_movie():
@@ -35,12 +35,12 @@ def pick_movie():
 def synopsis(which_movie_number, response):
     result_for_number = response['results'][which_movie_number]
 
-    ui.message('\nMovie:')
-    ui.message(result_for_number["title"])
-    ui.message('\nRelease date:')
-    ui.message(result_for_number["release_date"])
-    ui.message('\nSynopsis:')
-    ui.message(result_for_number['overview'])
+    ui.print_to_user('\nMovie:')
+    ui.print_to_user(result_for_number["title"])
+    ui.print_to_user('\nRelease date:')
+    ui.print_to_user(result_for_number["release_date"])
+    ui.print_to_user('\nSynopsis:')
+    ui.print_to_user(result_for_number['overview'])
 
 # handle_movie_choice function for movie main menu display
 def handle_movie_choice(choice, results):
@@ -49,12 +49,12 @@ def handle_movie_choice(choice, results):
         synopsis(int(choice)-1, results)
 
     else:
-        ui.message("Please enter a valid selection")
+        ui.print_to_user("Please enter a valid selection")
 
 # "main" function of DBmovie.py, kicks off movie api catcher and logic
 def movie_start():
 
-    ui.message("\n*Top 5 movies in Twin Cities Area Theaters*")
+    ui.print_to_user("\n*Top 5 movies in Twin Cities Area Theaters*")
     results = movie_api_top_5_movies_request()
 
     quit = "b"
@@ -65,4 +65,4 @@ def movie_start():
         choice = pick_movie()
         handle_movie_choice(choice, results)
 
-    ui.message("\n*Main Menu")
+    ui.print_to_user("\n*Main Menu")

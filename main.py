@@ -12,15 +12,15 @@ def handle_choice(choice):
         DBmovie.movie_start()
 
     elif choice == "q" or choice == "Q":
-        ui.message("\nGoodbye!\n")
+        ui.print_to_user("\nGoodbye!\n")
         exit(0)
 
     else:
-        ui.message("Please enter a valid selection")
+        ui.print_to_user("Please enter a valid selection")
 
 # main function
 def main():
-    ui.message("\nWelcome to Fun Night Out!")
+    ui.print_to_user("\nWelcome to Fun Night Out!")
 
     quit = "q"
     choice = None
