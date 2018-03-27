@@ -18,8 +18,22 @@ def zomato_request(restaurant_id):
     # log response status code
     log.write_to_log("Status code for request to Zomato API: " + str(raw_data))
 
-    # return raw_data
-    return raw_data
+    # error handling for bad API key
+    if str(raw_data) == "<Response [403]>":
+        ui.print_to_user("\nInvalid API key. Exiting Fun Night Out.\n")
+        log.write_to_log("Bad Zomato API key, exiting program.")
+        exit(0)
+
+    # return data if response 200 (valid API key, working response)
+    elif str(raw_data) == "<Response [200]>":
+        # return raw_data
+        return raw_data
+
+    # handles all other status codes from API request.
+    else:
+        ui.print_to_user("\nStatus code: " + str(raw_data))
+        ui.print_to_user("An unknown error occured with the Zomato API. Exiting Fun Night Out.\n")
+        log.write_to_log("Unknown error with the Zomato API. " + str(raw_data))
 
 # convert raw_data of api call to json format
 def convert_to_json(raw_data):

@@ -7,12 +7,29 @@ import requests, os, ui, log
 # HTTP request
 def movie_api_top_5_movies_request():
     url = "https://api.themoviedb.org/3/movie/now_playing"
-    key = os.environ.get('MOVIE_KEY')
+    key = os.environ.get("MOVIE_KEY")
     country = 'US'
     payload = {'api_key' : key, 'region' : country}
     response = requests.get(url, payload)
 
-    return response
+    # error handling for bad API key
+    if str(response) == "<Response [401]>":
+        ui.print_to_user("\nInvalid API key. Exiting Fun Night Out.\n")
+        log.write_to_log("Bad Movie API key, exiting program.")
+        exit(0)
+
+    # return data if response 200 (valid API key, working response)
+    elif str(response) == "<Response [200]>":
+        # return response
+        return response
+
+    # handles all other status codes from API request.
+    else:
+        ui.print_to_user("\nStatus code: " + str(response))
+        ui.print_to_user("An unknown error occured with the Movie API. Exiting Fun Night Out.\n")
+        log.write_to_log("Unknown error with Movie API. " + str(response))
+        exit(0)
+
 
 def convert_to_json(response):
     return response.json()

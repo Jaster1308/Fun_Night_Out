@@ -4,7 +4,7 @@ import os, requests, nose, restaurants, log
 
 # using third party nose library for mock api testing
 
-# test for restaurant api call with a valid api key
+# test for restaurant api call with a valid api key, should return true
 def test_restaurant_api_good_key():
 
     log.write_to_log("Testing restaurant api call with valid API key")
@@ -20,7 +20,7 @@ def test_restaurant_api_good_key():
     # test the Response
     nose.tools.assert_true(response.ok)
 
-# test for restaurant api call with a fake api key
+# test for restaurant api call with a fake api key, shoule return false
 def test_restaurant_api_bad_key():
 
     log.write_to_log("Testing restaurant api call with invalid API key")
@@ -36,7 +36,7 @@ def test_restaurant_api_bad_key():
     # test the Response
     nose.tools.assert_false(response.ok)
 
-# test for movie api call with a valid api key
+# test for movie api call with a valid api key, should return true
 def test_movie_api_good_key():
 
     log.write_to_log("Testing movie api call with valid API key")
@@ -52,7 +52,7 @@ def test_movie_api_good_key():
     # test the response
     nose.tools.assert_true(response.ok)
 
-# test for movie api call with a fake api key
+# test for movie api call with a fake api key, should return false
 def test_movie_api_bad_key():
 
     log.write_to_log("Testing movie api call with invalid API key")
