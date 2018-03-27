@@ -1,9 +1,12 @@
 # restaurant api caller
 # ui.py
 
+import log
+
 # main menu display
 def display_menu():
 
+    log.write_to_log("Display menu shown.")
     # Display choices for user, return users selection
     print('''
         1. Pick a place to eat
@@ -21,4 +24,5 @@ def prompt_for_more():
 
 def print_to_user(content):
     # get message from somewhere else in project, print to user
+    log.write_to_log("Content printed to user.")
     print(content)

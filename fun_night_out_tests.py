@@ -1,12 +1,13 @@
 # fun_night_out_tests
 
-import os, requests, nose, restaurants
+import os, requests, nose, restaurants, log
 
 # using third party nose library for mock api testing
 
 # test for restaurant api call with a valid api key
 def test_restaurant_api_good_key():
 
+    log.write_to_log("Testing restaurant api call with valid API key")
     # base information needed for restaurant api call
     zomato_api = os.environ.get("FOOD_KEY")
     base_url = "https://developers.zomato.com/api/v2.1/search?entity_id=826&entity_type=city"
@@ -22,6 +23,7 @@ def test_restaurant_api_good_key():
 # test for restaurant api call with a fake api key
 def test_restaurant_api_bad_key():
 
+    log.write_to_log("Testing restaurant api call with invalid API key")
     # base information needed for restaurant api call, with fake key
     zomato_api = "12345"
     base_url = "https://developers.zomato.com/api/v2.1/search?entity_id=826&entity_type=city"
@@ -37,6 +39,7 @@ def test_restaurant_api_bad_key():
 # test for movie api call with a valid api key
 def test_movie_api_good_key():
 
+    log.write_to_log("Testing movie api call with valid API key")
     # base information needed for movie api call
     url = "https://api.themoviedb.org/3/movie/now_playing"
     key = os.environ.get('MOVIE_KEY')
@@ -52,6 +55,7 @@ def test_movie_api_good_key():
 # test for movie api call with a fake api key
 def test_movie_api_bad_key():
 
+    log.write_to_log("Testing movie api call with invalid API key")
     # base information needed for movie api call, with fake key
     url = "https://api.themoviedb.org/3/movie/now_playing"
     key = "12345"

@@ -60,3 +60,4 @@ def food_start():
             choice = ui.prompt_for_more()
             continue
     ui.print_to_user("\n*Main Menu*")
+    log.write_to_log("Back to main menu.")

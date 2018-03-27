@@ -72,3 +72,4 @@ def movie_start():
         handle_movie_choice(choice, json_obj)
 
     ui.print_to_user("\n*Main Menu")
+    log.write_to_log("Back to main menu.")

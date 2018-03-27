@@ -7,6 +7,7 @@ import os
 DATA_DIR = "data"
 LOG_FILE_NAME = os.path.join(DATA_DIR, "log.txt")
 log_file = open(LOG_FILE_NAME, "w")
+log_file.write("Opening log file.\n")
 
 # take in content, write it to log_file on a new line
 def write_to_log(content):
@@ -16,4 +17,5 @@ def write_to_log(content):
 # close log_file
 def close_file():
 
+    log_file.write("Closing log file.")
     log_file.close()

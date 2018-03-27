@@ -1,6 +1,6 @@
 # main.py
 
-import restaurants, DBmovie, ui
+import restaurants, DBmovie, ui, log
 
 # handle choice for main menu display
 def handle_choice(choice):
@@ -13,6 +13,8 @@ def handle_choice(choice):
 
     elif choice == "q" or choice == "Q":
         ui.print_to_user("\nGoodbye!\n")
+        # close log file
+        log.close_file()
         exit(0)
 
     else:
@@ -20,6 +22,8 @@ def handle_choice(choice):
 
 # main function
 def main():
+    log.write_to_log("Main function executed.")
+
     ui.print_to_user("\nWelcome to Fun Night Out!")
 
     quit = "q"
@@ -29,8 +33,7 @@ def main():
     while choice != quit:
         choice = ui.display_menu()
         handle_choice(choice)
-    # close log file
-    log.close_file()
+
 
 
 if __name__ == '__main__':
