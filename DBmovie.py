@@ -1,9 +1,8 @@
 # movies api caller
 # DBmovie.py
 
-import requests
-import os
-import ui
+import requests, os, ui, log
+
 
 # HTTP request
 def movie_api_top_5_movies_request():
@@ -11,9 +10,12 @@ def movie_api_top_5_movies_request():
     key = os.environ.get('MOVIE_KEY')
     country = 'US'
     payload = {'api_key' : key, 'region' : country}
-    response = requests.get(url, payload).json()
+    response = requests.get(url, payload)
 
     return response
+
+def convert_to_json(response):
+    return response.json()
 
 # print the top 5 movies from the response, used as display menu for movies
 def print_movie_list(response):
@@ -56,13 +58,17 @@ def movie_start():
 
     ui.print_to_user("\n*Top 5 movies in Twin Cities Area Theaters*")
     results = movie_api_top_5_movies_request()
+    # log response status code
+    log.write_to_log("Status code for request to Movie API: " + str(results))
+    json_obj = convert_to_json(results)
+
 
     quit = "b"
     choice = None
 
     while choice != quit:
-        print_movie_list(results)
+        print_movie_list(json_obj)
         choice = pick_movie()
-        handle_movie_choice(choice, results)
+        handle_movie_choice(choice, json_obj)
 
     ui.print_to_user("\n*Main Menu")

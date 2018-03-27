@@ -1,8 +1,6 @@
 # restaurant api caller
 # restaurants.py
-import requests
-import ui
-import os
+import requests, ui, os, log
 
 
 # request to zomato api one restaurant at a time
@@ -17,6 +15,8 @@ def zomato_request(restaurant_id):
     url = base_url + "&start=" + str(restaurant_id) + "&count=1"
     # raw_data from API request
     raw_data = requests.get(url, headers=header)
+    # log response status code
+    log.write_to_log("Status code for request to Zomato API: " + str(raw_data))
 
     # return raw_data
     return raw_data

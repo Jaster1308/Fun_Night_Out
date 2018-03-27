@@ -29,5 +29,8 @@ def main():
     while choice != quit:
         choice = ui.display_menu()
         handle_choice(choice)
+    # close log file    
+    log.close_file()
+
 
 main()
